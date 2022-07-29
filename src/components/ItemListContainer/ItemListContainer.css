@@ -1,18 +1,19 @@
 .ItemListContainer {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 35px;
   background-color: rgba(231, 231, 231, 0.541);
   margin: 20px 0;
 }
 
 .greeting {
-  padding: 10px 0px 10px 80px;
   letter-spacing: 2px;
   font-weight: 300;
 }
 
-a {
-  text-decoration: none;
-  color: #004c99;
+.containerProducts {
+  display: flex;
+  gap: 30px;
 }
