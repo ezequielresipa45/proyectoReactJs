@@ -1,0 +1,23 @@
+.container {
+  
+  background-color: #fff;
+  padding: 25px 35px 40px 35px;
+  border-radius: 7px;
+  text-align: center;
+  height: 300px;
+}
+
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.container-image {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-image img {
+  width: 100%;
+  height: 200px;
+}
