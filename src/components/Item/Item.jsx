@@ -1,25 +1,25 @@
 import ItemCount from "../ItemCount/ItemCount";
-import "./Card.css";
+import "./Item.css";
 import React, { useState } from "react";
 
-export default function Card({ producto, imagen, addCard, cant }) {
+export default function Item({ marca, modelo, precio, imagen, addCard, cant }) {
+
   const [count, setCount] = useState(1);
 
   return (
     <div className="container">
       <div className="container-image">
-        <h4>{producto}</h4>
+        <h4>{marca}</h4>
+        <h5> {modelo}</h5>
         <img
           className="producto-image"
-          src={require(`../../images/${imagen}`)}
-          alt="conjunto"
+          src={imagen}
+          alt="imagen"
         />
+        <p>{precio}</p>
       </div>
       <ItemCount cantidad={cant} count={count} setCount={setCount} />
-      <button onClick={() => addCard(producto, count)}>
-        {" "}
-        Añadir al Carrito{" "}
-      </button>
+      <button onClick={() => addCard(marca, count)}>Añadir al Carrito</button>
     </div>
   );
 }
