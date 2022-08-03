@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import ItemsData from '../data/data'
 import Item from '../Item/Item'
 import Swal from "sweetalert2";
 import './ItemList.css'
 import Spinner from '../Spinner/Spinner'
-
 
 const addCard = (producto, cantidad) => {
   Swal.fire({
@@ -16,22 +13,7 @@ const addCard = (producto, cantidad) => {
   });
 };
 
-// PROMISE 
-function getProductos() {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(ItemsData), 2000)
-  })
-};
-
-export default function ItemList() {
-
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-    getProductos().then((respuesta) => {
-      setData(respuesta)
-    }).catch((e) => e)
-  }, [])
+export default function ItemList({ data }) {
 
   return (
     <div className='shoppingProductos'>
