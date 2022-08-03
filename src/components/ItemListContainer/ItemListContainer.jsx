@@ -3,14 +3,14 @@ import Swal from "sweetalert2";
 import Card from "../Card/Card";
 
 export default function ItemListContainer({ greeting }) {
-  const addCard = (producto) => {
+  const addCard = (producto, cantidad) => {
     Swal.fire({
       position: "top-end",
       icon: "success",
-      title: `Has añadido ${producto} al carrito`,
+      title: `Has añadido ${cantidad} ${producto} al carrito`,
       showConfirmButton: false,
       timer: 1500,
-    }); 
+    });
   };
 
   return (

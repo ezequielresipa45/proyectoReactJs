@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import add from "../../images/add.png";
 import remove from "../../images/remove.png";
 import "./ItemCount.css";
@@ -6,10 +5,8 @@ import "./ItemCount.css";
 // ES6 Modules or TypeScript
 import Swal from "sweetalert2";
 
-export default function ItemCount({ cantidad }) {
+export default function ItemCount({ cantidad, count, setCount }) {
   let stock = cantidad;
-
-  const [count, setCount] = useState(1);
 
   const addItems = () => {
     count < stock
