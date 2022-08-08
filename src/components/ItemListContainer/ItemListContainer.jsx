@@ -2,6 +2,9 @@ import "./ItemListContainer.css";
 import React, { useEffect, useState } from 'react'
 import ItemsData from '../data/data'
 import ItemList from '../ItemList/ItemList'
+import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer'
+
+
 
 export default function ItemListContainer({ greeting }) {
 
@@ -25,8 +28,9 @@ export default function ItemListContainer({ greeting }) {
     <div className="ItemListContainer">
       <h2 className="greeting">{greeting}</h2>
       <div className="containerProducts">
-        <ItemList
-          data={data} />
+        {/* <ItemList
+          data={data} /> */}
+        <ItemDetailContainer/>
       </div>
     </div>
   );

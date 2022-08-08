@@ -1,0 +1,14 @@
+.ItemDetailContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  padding: 10px 0;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  text-align: center;
+}

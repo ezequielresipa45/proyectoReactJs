@@ -3,17 +3,18 @@ import Swal from "sweetalert2";
 import './ItemList.css'
 import Spinner from '../Spinner/Spinner'
 
-const addCard = (producto, cantidad) => {
-  Swal.fire({
-    position: "top-end",
-    icon: "success",
-    title: `Has añadido ${cantidad} ${producto} al carrito`,
-    showConfirmButton: false,
-    timer: 1500,
-  });
-};
 
 export default function ItemList({ data }) {
+  
+  const addCard = (producto, cantidad) => {
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: `Has añadido ${cantidad} ${producto} al carrito`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
 
   return (
     <div className='shoppingProductos'>
