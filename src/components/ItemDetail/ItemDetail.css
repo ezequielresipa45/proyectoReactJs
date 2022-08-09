@@ -20,7 +20,7 @@ h3 {
 }
 
 .containerDetailsImg img {
-  width: 50%;
+  
   border-radius: 25px;
 }
 
@@ -36,3 +36,9 @@ h3 {
   font-size: 30px;
   font-weight: bold;
 }
+
+.group-price-count{
+  display: flex;
+  flex-direction: column;
+}
+
