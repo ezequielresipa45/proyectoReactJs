@@ -15,6 +15,11 @@ export default function ItemDetail({ price, images, modelo, marca, detalles }) {
           <p>Adquieralo solo por <span>{price}</span></p>
         </div>
       </div>
+
+
+
+
+      
     </div>
   )
 }

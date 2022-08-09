@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
-import ItemsData from '../data/data'
+import ItemsData from '../../data/data'
 import '../ItemDetailContainer/ItemDetailContainer.css'
 import Spinner from '../Spinner/Spinner'
 
