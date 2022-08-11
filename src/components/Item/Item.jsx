@@ -1,10 +1,10 @@
-import ItemCount from "../ItemCount/ItemCount";
+
 import "./Item.css";
-import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-export default function Item({ marca, modelo, precio, imagen, addCard, cant }) {
+export default function Item({ marca, modelo, precio, imagen, Id }) {
 
-  const [count, setCount] = useState(1);
+
 
   return (
     <div className="container">
@@ -17,9 +17,11 @@ export default function Item({ marca, modelo, precio, imagen, addCard, cant }) {
           alt="imagen"
         />
         <p>{precio}</p>
+
+        <Link to={`/detalles/${Id}`}>Ver Más</Link>
+
       </div>
-      <ItemCount cantidad={cant} count={count} setCount={setCount} />
-      <button onClick={() => addCard(marca, count)}>Añadir al Carrito</button>
+
     </div>
   );
 }

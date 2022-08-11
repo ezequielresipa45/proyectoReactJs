@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import ItemsData from '../../data/data'
 import '../ItemDetailContainer/ItemDetailContainer.css'
-import Spinner from '../Spinner/Spinner'
+
 import Swal from "sweetalert2";
+
+import { useParams}  from "react-router-dom";
 
 
 export default function ItemDetailContainer() {
 
+    const Id = useParams().id;
 
     const addCard = (producto, cantidad) => {
         Swal.fire({
@@ -22,8 +25,12 @@ export default function ItemDetailContainer() {
 
     // PROMISE 
     function getDetail() {
-        return new Promise((resolve) => {
-            setTimeout(() => resolve(ItemsData[0]), 2000)
+        return new Promise((resolve,reject) => {
+
+            let itemRequired = ItemsData.find(elemente => elemente.id == Id);
+
+            itemRequired === undefined ? reject('No se encontro el Item solicitado') :
+            setTimeout(() => resolve(itemRequired), 2000)
         })
     };
 
@@ -33,14 +40,15 @@ export default function ItemDetailContainer() {
 
         getDetail().then((respuesta) => {
             setData(respuesta)
-        }).catch((e) => e);
+        }).catch((e) => alert(e));
 
     }, [])
 
     return (
 
-        data.length === 0 ? <Spinner /> :
-            <div className='ItemDetailContainer'>
+        
+        data.length === 0 ? 'Cargando...' : 
+        <div className='ItemDetailContainer'>
                 <h1>Detalles del {data.car_make}</h1>
                 <ItemDetail
                     addCard={addCard}
@@ -52,8 +60,9 @@ export default function ItemDetailContainer() {
                     price={data.price}
                     cant={5}
                 />
-            </div>
-
+                </div>
+            
+        
 
     )
 }

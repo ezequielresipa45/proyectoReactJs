@@ -3,13 +3,14 @@ import cash from "../../images/cash.svg";
 import profile from "../../images/myprofile.svg";
 import "./NavBar.css";
 import CartWidget from "../CartWidget/CartWidget";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
     <div className="navBar">
-      <a href="index.html">
+      <Link to="/">
         <img className="logo" src={logo} alt="bbva-logo" />
-      </a>
+      </Link>
       <div className="contenedorParrafos">
         <p className="solicitarTarjeta">
           <img src={cash} alt="Cash" />
@@ -25,10 +26,10 @@ function NavBar() {
       </div>
       <ul>
         <li>
-          <a href="clientes.html">Clientes</a>
+        <Link to="/productos">Productos</Link>
         </li>
         <li>
-          <a href="nosotros.html">Sobre Nosotros</a>
+          <Link to="/categorias/Porsche">Categorias Por Marca </Link>
         </li>
         <li>
           <a href="contacto.html">Contacto</a>

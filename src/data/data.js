@@ -21,7 +21,7 @@ const itemsData = [{
     "detalles": "El nuevo Toyota se convierte en una referencia en deportividad dentro de su segmento gracias a su diseño imponente y exclusivo. Los detalles de calidad en rojo y negro brillante, los faros full LED y su frontal aguerrida nos muestran toda la deportividad en una sola mirada."
   }, {
     "id": 40,
-    "car_make": "Hyundai",
+    "car_make": "Porsche",
     "car_model": "Excel",
     "img": "https://cdni.autocarindia.com/utils/imageresizer.ashx?n=http://cms.haymarketindia.net/model/uploads/modelimages/Hyundai-Alcazar-130720212215.jpg&w=872&h=578&q=75&c=1",
     "price": "$6013.52",
@@ -31,11 +31,11 @@ const itemsData = [{
     "car_make": "Mercury",
     "car_model": "Mountaineer",
     "img": "https://cars.usnews.com/static/images/Auto/izmo/315068/2010_mercury_grand_marquis_angularfront.jpg",
-    "price": "$5474.36",
+    "price": "$5405.91",
     "detalles": "El nuevo Mercury se convierte en una referencia en deportividad dentro de su segmento gracias a su diseño imponente y exclusivo. Los detalles de calidad en rojo y negro brillante, los faros full LED y su frontal aguerrida nos muestran toda la deportividad en una sola mirada."
   }, {
     "id": 98,
-    "car_make": "Lotus",
+    "car_make": "Porsche",
     "car_model": "Evora",
     "img": "https://p4.wallpaperbetter.com/wallpaper/826/410/477/2011-lotus-evora-s-white-lotus-evora-s-wallpaper-preview.jpg",
     "price": "$8390.71",
@@ -49,7 +49,7 @@ const itemsData = [{
     "detalles": "El nuevo Ford se convierte en una referencia en deportividad dentro de su segmento gracias a su diseño imponente y exclusivo. Los detalles de calidad en rojo y negro brillante, los faros full LED y su frontal aguerrida nos muestran toda la deportividad en una sola mirada."
   }, {
     "id": 20,
-    "car_make": "Mitsubishi",
+    "car_make": "Porsche",
     "car_model": "Chariot",
     "img": "https://img.remediosdigitales.com/ab0a39/mitsubishi_lancer_evolution_x-1/1366_2000.jpg",
     "price": "$8706.53",
@@ -66,7 +66,7 @@ const itemsData = [{
     "car_make": "Porsche",
     "car_model": "911",
     "img": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_9d979521bbeb4ed2b33aeb0fc903bf99.jpg",
-    "price": "$6853.10",
+    "price": "$5405.91",
     "detalles": "El nuevo Porsche se convierte en una referencia en deportividad dentro de su segmento gracias a su diseño imponente y exclusivo. Los detalles de calidad en rojo y negro brillante, los faros full LED y su frontal aguerrida nos muestran toda la deportividad en una sola mirada."
   }]
 

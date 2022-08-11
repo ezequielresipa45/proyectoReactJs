@@ -2,7 +2,8 @@ import "./ItemListContainer.css";
 import React, { useEffect, useState } from 'react'
 import ItemsData from '../../data/data'
 import ItemList from '../ItemList/ItemList'
-import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer'
+import { useParams}  from "react-router-dom";
+
 
 
 
@@ -17,9 +18,18 @@ export default function ItemListContainer({ greeting }) {
 
   const [data, setData] = useState([])
 
+
+const Categoria =  useParams().idCategorias;
+
   useEffect(() => {
     getProductos().then((respuesta) => {
-      setData(respuesta)
+      let filtrados =  respuesta.filter(elemento => elemento.car_make == Categoria );
+
+
+      Categoria === undefined ?  setData(respuesta) : 
+
+     setData(filtrados);
+
     }).catch((e) => e)
   }, [])
 
@@ -28,9 +38,9 @@ export default function ItemListContainer({ greeting }) {
     <div className="ItemListContainer">
       <h2 className="greeting">{greeting}</h2>
       <div className="containerProducts">
-        {/* <ItemList
-          data={data} /> */}
-        <ItemDetailContainer/>
+        <ItemList
+          data={data} />
+       
       </div>
     </div>
   );
