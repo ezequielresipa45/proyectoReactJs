@@ -1,4 +1,4 @@
-import logo from "../../images/bbva-logo.png";
+import cars from '../../images/logo-cars.png'
 import cash from "../../images/cash.svg";
 import profile from "../../images/myprofile.svg";
 import "./NavBar.css";
@@ -9,12 +9,12 @@ function NavBar() {
   return (
     <div className="navBar">
       <Link to="/">
-        <img className="logo" src={logo} alt="bbva-logo" />
+        <img className="logo" src={cars} alt="cars-logo" />
       </Link>
       <div className="contenedorParrafos">
         <p className="solicitarTarjeta">
           <img src={cash} alt="Cash" />
-          Solicitá tu Tarjetas de Crédito
+          Solicitá tu Crédito Personal
         </p>
 
         <p>|</p>

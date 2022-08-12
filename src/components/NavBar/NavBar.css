@@ -2,15 +2,16 @@
   width: 100%;
   height: 70px;
   display: flex;
-  background-color: #004c99;
+  background-color: #000;
+
   align-items: center;
   justify-content: space-between;
   padding: 0 50px;
   box-sizing: border-box;
 }
 .navBar .logo {
-  width: 150px;
-  height: 70px;
+  width: 110px;
+ 
 }
 
 .contenedorParrafos {
