@@ -2,8 +2,13 @@ import '../ItemDetail/ItemDetail.css'
 import ItemCount from "../ItemCount/ItemCount";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import { useContext } from 'react';
+import {cartContext} from '../../store/cartContex.js'
+
 
 export default function ItemDetail({ price, images, modelo, marca, detalles, cant }) {
+
+ const {addItem} = useContext(cartContext);
 
   const [state, setState] = useState(0);
 
@@ -17,6 +22,7 @@ export default function ItemDetail({ price, images, modelo, marca, detalles, can
     });
 
     setState(cantidad)
+    addItem(producto,cantidad);
   };
 
   return (
