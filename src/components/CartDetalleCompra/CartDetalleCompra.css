@@ -1,0 +1,13 @@
+.containerProductsCompra div{
+    display:flex;
+   
+    color:#000;
+    gap: 25px;
+    background-color:red;
+   justify-content:space-between;
+    align-items: center;
+}
+
+
+
+

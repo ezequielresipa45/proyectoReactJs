@@ -59,7 +59,7 @@ export default function ItemDetail({
             {cart.some((itemInCart) => itemInCart.item === marca) === false ? ( // Le digo que si el producto NO ESTA en el carrito o en el (array cart que me traigo de cartContext) que se muestre el itemCount y si el producto ESTA que el ITEMCOUNT SE OCULTE Y MUESTRE EL IR AL CARRITO...
               <ItemCount cantidad={cant} addCard={addCard} marca={marca} />
             ) : (
-              <Link to="/cart">Ir al carrito</Link>
+              <Link to="/CartDetalleCompra">Ir al carrito</Link>
             )}
           </div>
         </div>

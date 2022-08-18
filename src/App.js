@@ -6,7 +6,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import Inicio from "./components/Inicio/Inicio";
 import CartProvider from "./store/cartContex";
 import ItemDetail from "./components/ItemDetail/ItemDetail";
-import CartProvisorio from "./components/CartProvisorio/CartProvisorio";
+import CartDetalleCompra from "./components/CartDetalleCompra/CartDetalleCompra";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
               element={<ItemListContainer />}
             />
             <Route path="/detalles/:id" element={<ItemDetailContainer />} />
-            <Route path="/cart" element={<CartProvisorio />} />
+            <Route path="/CartDetalleCompra" element={<CartDetalleCompra />} />
           </Routes>
         </CartProvider>
       </BrowserRouter>
