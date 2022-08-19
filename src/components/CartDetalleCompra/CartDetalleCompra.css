@@ -1,13 +1,41 @@
+
+.containerProductsCompra{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .containerProductsCompra div{
     display:flex;
    
     color:#000;
     gap: 25px;
-    background-color:red;
+    background-color:rgb(233, 233, 233);
+    border: 1px solid #000;
    justify-content:space-between;
     align-items: center;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 
+.containerProductsCompra div button {
+
+    background-color:red;
+    padding: 10px;
+    border-radius: 10px;
+    color:white;
+    border: none;
+    cursor: pointer;
+}
 
 
+.btnBorrarTodo{
+    margin: 20px;
+    background-color:red;
+    padding: 10px;
+    border-radius: 10px;
+    color:white;
+    border: none;
+    cursor: pointer;
+}

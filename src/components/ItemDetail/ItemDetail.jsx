@@ -13,14 +13,15 @@ export default function ItemDetail({
   marca,
   detalles,
   cant,
+  id
 }) {
   const { cart, addItem } = useContext(cartContext);
 
-  //  console.log(cart.some((itemInCart) => itemInCart.item === marca))  //
-
   const [state, setState] = useState(0);
 
-  const addCard = (producto, cantidad) => {
+  console.log(state) // Llamo a este console.log porque sino me tira el warning que el state no es usado
+
+  const addCard = (producto, cantidad, id, price) => {
     Swal.fire({
       position: "top-end",
       icon: "success",
@@ -30,7 +31,8 @@ export default function ItemDetail({
     });
 
     setState(cantidad);
-    addItem(producto, cantidad);
+    addItem(producto, cantidad, id, price);
+
   };
 
   return (
@@ -57,7 +59,7 @@ export default function ItemDetail({
               Adquieralo solo por <span>{price}</span>
             </p>
             {cart.some((itemInCart) => itemInCart.item === marca) === false ? ( // Le digo que si el producto NO ESTA en el carrito o en el (array cart que me traigo de cartContext) que se muestre el itemCount y si el producto ESTA que el ITEMCOUNT SE OCULTE Y MUESTRE EL IR AL CARRITO...
-              <ItemCount cantidad={cant} addCard={addCard} marca={marca} />
+              <ItemCount cantidad={cant} addCard={addCard} marca={marca} id={id} price={price} />
             ) : (
               <Link to="/CartDetalleCompra">Ir al carrito</Link>
             )}

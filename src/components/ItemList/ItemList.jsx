@@ -11,6 +11,7 @@ export default function ItemList({ data }) {
     <div className='shoppingProductos'>
       {data.length === 0 ? <Spinner /> :
         data.map((productos) =>
+      
           <Item
             Id = {productos.id}
             marca={productos.car_make}

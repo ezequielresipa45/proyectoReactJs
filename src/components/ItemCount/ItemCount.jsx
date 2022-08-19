@@ -5,9 +5,20 @@ import Swal from "sweetalert2";
 import React, { useState } from "react";
 
 
-export default function ItemCount({ cantidad, addCard, marca }) {
+
+export default function ItemCount({ cantidad, addCard, marca, id, price}) {
+
+
+ 
+
 
   const [count, setCount] = useState(1);
+
+  
+
+
+
+
 
 
   let stock = cantidad;
@@ -31,7 +42,7 @@ export default function ItemCount({ cantidad, addCard, marca }) {
       <img onClick={() => addItems()} src={add} alt="add" />
       <p> {count} </p>
       <img onClick={() => removeItems()} src={remove} alt="remove" />
-      <button onClick={() => addCard(marca, count)}>Añadir al Carrito</button>
+      <button onClick={() => addCard(marca, count, id, price)}>Añadir al Carrito</button>
     </div>
   );
 }

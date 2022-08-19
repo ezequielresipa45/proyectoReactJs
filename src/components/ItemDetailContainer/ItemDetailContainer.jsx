@@ -3,10 +3,11 @@ import ItemDetail from '../ItemDetail/ItemDetail'
 import ItemsData from '../../data/data'
 import '../ItemDetailContainer/ItemDetailContainer.css'
 import { useParams } from "react-router-dom";
+import Spinner from '../Spinner/Spinner'
 
 export default function ItemDetailContainer() {
     const Id = useParams().id;
-     // PROMISE 
+    // PROMISE 
     function getDetail() {
         return new Promise((resolve, reject) => {
 
@@ -27,18 +28,20 @@ export default function ItemDetailContainer() {
     }, [])
 
     return (
-        data.length === 0 ? 'Cargando...' :
-            <div className='ItemDetailContainer'>
-                <h1>Detalles del {data.car_make}</h1>
-                <ItemDetail
-                    marca={data.car_make}
-                    detalles={data.detalles}
-                    images={data.img}
-                    modelo={data.car_model}
-                    key={data.id}
-                    price={data.price}
-                    cant={5}
-                />
-            </div>
+        <div className='ItemDetailContainer'>
+            {data.length === 0 ? <div className="alertSpinner"> <Spinner /></div> :
+                <div className='ItemDetailContainer_Interior'>
+                    <h1>Detalles del {data.car_make}</h1>
+                    <ItemDetail
+                        marca={data.car_make}
+                        detalles={data.detalles}
+                        images={data.img}
+                        modelo={data.car_model}
+                        key={data.id}
+                        id={data.id}
+                        price={data.price}
+                        cant={5}
+                    /></div>}
+        </div>
     )
 }

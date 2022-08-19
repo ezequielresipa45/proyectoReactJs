@@ -1,10 +1,13 @@
-.ItemDetailContainer {
+.ItemDetailContainer, .ItemDetailContainer_Interior {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
   
 }
+
+
 
 h1 {
   margin: 0;
