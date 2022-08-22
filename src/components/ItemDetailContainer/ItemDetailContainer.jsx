@@ -18,7 +18,7 @@ export default function ItemDetailContainer() {
         })
     };
 
-    const [data, setData] = useState([])
+    const [data, setData] = useState({})
 
     useEffect(() => {
         getDetail().then((respuesta) => {
@@ -27,12 +27,17 @@ export default function ItemDetailContainer() {
 
     }, [])
 
+
+
+
+
     return (
         <div className='ItemDetailContainer'>
-            {data.length === 0 ? <div className="alertSpinner"> <Spinner /></div> :
+            {Object.entries(data).length === 0 ? <div className="alertSpinner"> <Spinner /></div> :
                 <div className='ItemDetailContainer_Interior'>
                     <h1>Detalles del {data.car_make}</h1>
                     <ItemDetail
+                        data = {data}
                         marca={data.car_make}
                         detalles={data.detalles}
                         images={data.img}

@@ -8,18 +8,31 @@ export default function CartProvider({ children }) {
 
   const [cart, setCart] = useState([]);
 
-  function addItem(item, quantity, id, price) {
-    if (isInCart(item)) {
+  let copyCart = [...cart];
+
+
+  function addItem(item, quantity, id, price, data) {
+    if (isInCart(data.id)) {
+      const itemIndex = findItem(data.id);
+      itemIndex.quantity += quantity;
+      setCart(copyCart);
     } else {
-      let copyCart = [...cart];
       copyCart.push({ id, item, quantity, price });
       setCart(copyCart);
     }
   }
 
-  function isInCart(item) {
-    return cart.some((itemInCart) => itemInCart.item === item);
+  function isInCart(id) {
+    return (copyCart.some(itemInCart => itemInCart.id === id))
   }
+
+
+  // funcion para buscar un item en base a su id
+  function findItem(id) {
+    return (copyCart.find(item => item.id === Number(id)))
+  }
+
+
 
   return (
     <cartContext.Provider value={{ cart, addItem, setCart, setPrueba, prueba }}>
