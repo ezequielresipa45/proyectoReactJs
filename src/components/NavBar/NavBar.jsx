@@ -29,7 +29,7 @@ function NavBar() {
         <Link to="/productos">Productos</Link>
         </li>
         <li>
-          <Link to="/categorias/Porsche">Categorias Por Marca </Link>
+          <Link to="/categorias/Porsche">Categorias PORSCHE </Link>
         </li>
         <li>
           <a href="contacto.html">Contacto</a>

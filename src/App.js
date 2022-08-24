@@ -7,6 +7,7 @@ import Inicio from "./components/Inicio/Inicio";
 import CartProvider from "./store/cartContex";
 import CartDetalleCompra from "./components/CartDetalleCompra/CartDetalleCompra";
 
+
 function App() {
   return (
     <div className="App">

@@ -1,35 +1,41 @@
 import React, { useEffect, useState } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
-import ItemsData from '../../data/data'
+
 import '../ItemDetailContainer/ItemDetailContainer.css'
 import { useParams } from "react-router-dom";
 import Spinner from '../Spinner/Spinner'
+import firestoreDB from "../../services/firebase";
+import { collection, doc, getDoc } from "firebase/firestore";
+
+
+
+function getDetail(id) {
+
+    return new Promise((resolve, reject) => {
+
+        const productosCollection = collection(firestoreDB, "vehiculos");
+        const docRef = doc(productosCollection, id);
+        getDoc(docRef).then(snapshot => {
+            resolve(
+
+                { ...snapshot.data(), id: snapshot.id }
+            )
+        });
+    })
+}
 
 export default function ItemDetailContainer() {
+
     const Id = useParams().id;
-    // PROMISE 
-    function getDetail() {
-        return new Promise((resolve, reject) => {
-
-            let itemRequired = ItemsData.find(elemente => elemente.id == Id);
-
-            itemRequired === undefined ? reject('No se encontro el Item solicitado') :
-                setTimeout(() => resolve(itemRequired), 2000)
-        })
-    };
 
     const [data, setData] = useState({})
 
     useEffect(() => {
-        getDetail().then((respuesta) => {
+        getDetail(Id).then((respuesta) => {
             setData(respuesta)
         }).catch((e) => alert(e));
 
     }, [])
-
-
-
-
 
     return (
         <div className='ItemDetailContainer'>
@@ -37,7 +43,7 @@ export default function ItemDetailContainer() {
                 <div className='ItemDetailContainer_Interior'>
                     <h1>Detalles del {data.car_make}</h1>
                     <ItemDetail
-                        data = {data}
+                        data={data}
                         marca={data.car_make}
                         detalles={data.detalles}
                         images={data.img}

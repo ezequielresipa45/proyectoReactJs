@@ -8,18 +8,7 @@ import React, { useState } from "react";
 
 export default function ItemCount({ cantidad, addCard, marca, id, price}) {
 
-
- 
-
-
   const [count, setCount] = useState(1);
-
-  
-
-
-
-
-
 
   let stock = cantidad;
 
