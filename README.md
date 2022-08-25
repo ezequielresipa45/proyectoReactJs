@@ -12,6 +12,7 @@ Para realizar esta App eh trabajado con las siguientes herramientas, algunas pro
 - Maps y Promises
 - Asincronía
 - Operadores ternarios
+- DataBase con FireBase
 
 
 ## Instalación de Dependencias
