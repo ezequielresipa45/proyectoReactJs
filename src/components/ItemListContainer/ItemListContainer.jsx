@@ -60,7 +60,7 @@ export default function ItemListContainer({ greeting }) {
     } else {
       getProductos().then((resolve) => setData(resolve));
     }
-  }, [data]);
+  }, []);
 
   return (
     <div className="ItemListContainer">
