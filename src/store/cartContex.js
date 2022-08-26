@@ -1,8 +1,12 @@
 import { createContext, useState } from "react";
 
+
+
 export const cartContext = createContext();
 
 export default function CartProvider({ children }) {
+
+
 
   const [prueba, setPrueba] = useState(0);
 
