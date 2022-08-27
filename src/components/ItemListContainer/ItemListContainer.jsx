@@ -50,17 +50,17 @@ export default function ItemListContainer({ greeting }) {
 
   const [data, setData] = useState([]);
 
-  const Categoria = useParams().idCategorias;
+  const categoria = useParams().idCategorias;
 
   useEffect(() => {
-    if (Categoria) {
+    if (categoria) {
 
-      getItemsFromDBbyIdCategory(Categoria).then((resolve) => setData(resolve));
+      getItemsFromDBbyIdCategory(categoria).then((resolve) => setData(resolve));
 
     } else {
       getProductos().then((resolve) => setData(resolve));
     }
-  }, []);
+  }, [categoria]);
 
   return (
     <div className="ItemListContainer">

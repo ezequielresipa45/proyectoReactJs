@@ -27,7 +27,7 @@ export default function UserForm({cart, cantidad}) {
         date: new Date(),
       };
 
-      const redirijir = () => { setTimeout(function () { window.location.href = "/"; }, 3000) }
+      const redirijir = () => { setTimeout(function () { window.location.href = "/"; }, 4000) }
 
       const redirijirConAlert = () => {
 
@@ -36,7 +36,7 @@ export default function UserForm({cart, cantidad}) {
           icon: 'success',
           title: `Su compra ah sido realizada con éxito, su nº de seguimiento es el ${orderFirebase.id}`,
           showConfirmButton: false,
-          timer: 3500
+          timer: 4500
         })
     
         redirijir()
@@ -70,13 +70,12 @@ export default function UserForm({cart, cantidad}) {
         });
       }
 
-      if (orderFirebase.complete === true) {
-        return redirijirConAlert();}
+  if (orderFirebase.complete === true) redirijirConAlert();
 
   return (
     <div className="form-container">
       <form onReset={handleReset} onSubmit={handleSubmit}>
-<h3>Formulario de Compra</h3>
+        <h3>Formulario de Compra</h3>
         <div className="form-item">     
           <input
             value={userData.name}
