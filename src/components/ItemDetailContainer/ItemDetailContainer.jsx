@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
-
 import '../ItemDetailContainer/ItemDetailContainer.css'
 import { useParams } from "react-router-dom";
 import Spinner from '../Spinner/Spinner'
@@ -11,13 +10,12 @@ import { collection, doc, getDoc } from "firebase/firestore";
 
 function getDetail(id) {
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
 
         const productosCollection = collection(firestoreDB, "vehiculos");
         const docRef = doc(productosCollection, id);
         getDoc(docRef).then(snapshot => {
             resolve(
-
                 { ...snapshot.data(), id: snapshot.id }
             )
         });

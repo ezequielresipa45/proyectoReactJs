@@ -19,9 +19,7 @@ export default function Item({ marca, modelo, precio, imagen, Id }) {
         <p>{precio}</p>
 
         <Link to={`/detalles/${Id}`}>Ver Más</Link>
-
       </div>
-
     </div>
   );
 }

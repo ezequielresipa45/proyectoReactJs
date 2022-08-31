@@ -18,8 +18,6 @@ export default function ItemListContainer({ greeting }) {
 
         const docsData = snapshot.docs.map(doc => {
           return { ...doc.data(), id: doc.id }
-
-
         });
 
         resolve(docsData);
