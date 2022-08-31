@@ -33,7 +33,7 @@ export default function ItemDetailContainer() {
             setData(respuesta)
         }).catch((e) => alert(e));
 
-    }, [])
+    }, [Id])
 
     return (
         <div className='ItemDetailContainer'>

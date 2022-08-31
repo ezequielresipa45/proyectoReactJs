@@ -16,7 +16,7 @@ export default function ItemDetail({
   id,
   data
 }) {
-  const { cart, addItem } = useContext(cartContext);
+  const {  addItem } = useContext(cartContext);
 
   const [state, setState] = useState(0);
 
