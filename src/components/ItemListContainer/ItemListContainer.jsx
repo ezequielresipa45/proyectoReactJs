@@ -15,7 +15,6 @@ export default function ItemListContainer({ greeting }) {
       const productosCollection = collection(firestoreDB, "vehiculos")
 
       getDocs(productosCollection).then(snapshot => {
-
         const docsData = snapshot.docs.map(doc => {
           return { ...doc.data(), id: doc.id }
         });
@@ -40,7 +39,6 @@ export default function ItemListContainer({ greeting }) {
         const docsData = snapshot.docs.map(doc => {
           return { ...doc.data(), id: doc.id }
         });
-
         resolve(docsData);
       });
     });
