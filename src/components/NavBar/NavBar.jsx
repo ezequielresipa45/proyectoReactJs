@@ -1,11 +1,12 @@
 import cars from '../../images/logo-cars.png'
-import cash from "../../images/cash.svg";
-import profile from "../../images/myprofile.svg";
-import "./NavBar.css";
-import CartWidget from "../CartWidget/CartWidget";
-import { Link } from "react-router-dom";
+import cash from '../../images/cash.svg'
+import profile from '../../images/myprofile.svg'
+import './NavBar.css'
+import CartWidget from '../CartWidget/CartWidget'
+import { Link } from 'react-router-dom'
+import React from 'react'
 
-function NavBar() {
+function NavBar () {
   return (
     <div className="navBar">
       <Link to="/">
@@ -16,9 +17,7 @@ function NavBar() {
           <img src={cash} alt="Cash" />
           Solicitá tu Crédito Personal
         </p>
-
         <p>|</p>
-
         <p className="haceteCliente">
           <img src={profile} alt="MyProfile" />
           Hacete Cliente
@@ -34,13 +33,12 @@ function NavBar() {
         <li>
           <a href="#">Contacto</a>
         </li>
-
         <li>
           <CartWidget />
         </li>
       </ul>
     </div>
-  );
+  )
 }
 
-export default NavBar;
+export default NavBar

@@ -1,13 +1,10 @@
 .container {
-  
   background-color: #fff;
   padding: 25px 35px 40px 35px;
   border-radius: 7px;
   text-align: center;
   height: 400px;
 }
-
-
 
 h4 {
   margin: 0;

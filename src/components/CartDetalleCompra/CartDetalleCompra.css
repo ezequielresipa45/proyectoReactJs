@@ -7,7 +7,6 @@
 
 .containerProductsCompra div{
     display:flex;
-   
     color:#000;
     gap: 25px;
     background-color:rgb(233, 233, 233);
@@ -20,7 +19,6 @@
 
 
 .containerProductsCompra div button {
-
     background-color:red;
     padding: 10px;
     border-radius: 10px;

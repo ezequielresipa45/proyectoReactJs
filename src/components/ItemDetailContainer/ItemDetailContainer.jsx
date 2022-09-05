@@ -1,44 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import '../ItemDetailContainer/ItemDetailContainer.css'
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom'
 import Spinner from '../Spinner/Spinner'
-import firestoreDB from "../../services/firebase";
-import { collection, doc, getDoc } from "firebase/firestore";
+import firestoreDB from '../../services/firebase'
+import { collection, doc, getDoc } from 'firebase/firestore'
 
-
-
-function getDetail(id) {
-
-    return new Promise((resolve) => {
-
-        const productosCollection = collection(firestoreDB, "vehiculos");
-        const docRef = doc(productosCollection, id);
-        getDoc(docRef).then(snapshot => {
-            resolve(
-                { ...snapshot.data(), id: snapshot.id }
-            )
-        });
+function getDetail (id) {
+  return new Promise((resolve) => {
+    const productosCollection = collection(firestoreDB, 'vehiculos')
+    const docRef = doc(productosCollection, id)
+    getDoc(docRef).then(snapshot => {
+      resolve(
+        { ...snapshot.data(), id: snapshot.id }
+      )
     })
+  })
 }
 
-export default function ItemDetailContainer() {
+export default function ItemDetailContainer () {
+  const Id = useParams().id
+  const [data, setData] = useState({})
 
-    const Id = useParams().id;
+  useEffect(() => {
+    getDetail(Id).then((respuesta) => {
+      setData(respuesta)
+    }).catch((e) => alert(e))
+  }, [Id])
 
-    const [data, setData] = useState({})
-
-    useEffect(() => {
-        getDetail(Id).then((respuesta) => {
-            setData(respuesta)
-        }).catch((e) => alert(e));
-
-    }, [Id])
-
-    return (
+  return (
         <div className='ItemDetailContainer'>
-            {Object.entries(data).length === 0 ? <div className="alertSpinner"> <Spinner /></div> :
-                <div className='ItemDetailContainer_Interior'>
+            {Object.entries(data).length === 0
+              ? <div className="alertSpinner"> <Spinner /></div>
+              : <div className='ItemDetailContainer_Interior'>
                     <h1>Detalles del {data.car_make}</h1>
                     <ItemDetail
                         data={data}
@@ -52,5 +46,5 @@ export default function ItemDetailContainer() {
                         cant={5}
                     /></div>}
         </div>
-    )
+  )
 }

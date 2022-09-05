@@ -1,82 +1,75 @@
-import React, { useState } from "react";
-import {collection, addDoc} from "firebase/firestore";
-import firestoreDB from "../../services/firebase";
-import Swal from "sweetalert2";
+import React, { useState } from 'react'
+import { collection, addDoc } from 'firebase/firestore'
+import firestoreDB from '../../services/firebase'
+import Swal from 'sweetalert2'
 import './UserForm.css'
+import PropTypes from 'prop-types'
 
-export default function UserForm({cart, cantidad}) {
+export default function UserForm ({ cart, cantidad }) {
+  const [userData, setUserData] = useState({
+    name: '',
+    email: '',
+    telefono: ''
+  })
 
+  const [orderFirebase, setOrderFirebase] = useState({
+    id: '',
+    complete: false
+  })
 
-    const [userData, setUserData] = useState({
-        name: "",
-        email: "",
-        telefono: "",
-      });
+  const ordenDeCompra = {
+    buyer: { ...userData },
+    items: [...cart],
+    total: cantidad,
+    date: new Date()
+  }
 
+  const redirijir = () => { setTimeout(function () { window.location.href = '/' }, 4000) }
 
-    const [orderFirebase, setOrderFirebase] = useState({
-        id: '',
-        complete: false,
-      });    
+  const redirijirConAlert = () => {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: `Su compra ah sido realizada con éxito, su nº de seguimiento es el ${orderFirebase.id}`,
+      showConfirmButton: false,
+      timer: 4500
+    })
 
+    redirijir()
+  }
 
-    const ordenDeCompra = {
-        buyer: { ...userData },
-        items: [...cart],
-        total: cantidad,
-        date: new Date(),
-      };
+  async function handleSubmit (evt) {
+    evt.preventDefault()
+    const collectionRef = collection(firestoreDB, 'orders')
+    const order = await addDoc(collectionRef, ordenDeCompra)
+    setOrderFirebase({ id: order.id, complete: true })
+  }
 
-      const redirijir = () => { setTimeout(function () { window.location.href = "/"; }, 4000) }
+  function inputChangeHandler (evt) {
+    const input = evt.target
+    const value = input.value
+    const inputName = input.name
+    const copyUserData = { ...userData }
 
-      const redirijirConAlert = () => {
+    copyUserData[inputName] = value
+    setUserData(copyUserData)
+  }
 
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: `Su compra ah sido realizada con éxito, su nº de seguimiento es el ${orderFirebase.id}`,
-          showConfirmButton: false,
-          timer: 4500
-        })
-    
-        redirijir()
-    
-      }
+  function handleReset (evt) {
+    setUserData({
+      name: '',
+      email: '',
+      telefono: ''
+    })
+  }
 
-      async function handleSubmit(evt) {
-        evt.preventDefault();    
-        const collectionRef = collection(firestoreDB, "orders");
-        const order = await addDoc(collectionRef, ordenDeCompra);    
-        setOrderFirebase({id: order.id, complete: true});
-        
-      }  
-
-      function inputChangeHandler(evt) {
-        const input = evt.target;
-        const value = input.value;
-        const inputName = input.name;
-        let copyUserData = { ...userData };
-    
-        copyUserData[inputName] = value;
-        setUserData(copyUserData);
-      }
-
-
-      function handleReset(evt) {
-        setUserData({
-          name: "",
-          email: "",
-          telefono: "",
-        });
-      }
-
-  if (orderFirebase.complete === true) redirijirConAlert();
+  if (orderFirebase.complete === true) redirijirConAlert()
 
   return (
     <div className="form-container">
       <form onReset={handleReset} onSubmit={handleSubmit}>
         <h3>Formulario de Compra</h3>
-        <div className="form-item">     
+        <div className="form-item">
           <input
             value={userData.name}
             onChange={inputChangeHandler}
@@ -87,7 +80,7 @@ export default function UserForm({cart, cantidad}) {
             required
           />
         </div>
-        <div className="form-item">         
+        <div className="form-item">
           <input
             value={userData.telefono}
             onChange={inputChangeHandler}
@@ -98,7 +91,7 @@ export default function UserForm({cart, cantidad}) {
             required
           />
         </div>
-        <div className="form-item">        
+        <div className="form-item">
           <input
             value={userData.email}
             onChange={inputChangeHandler}
@@ -113,9 +106,14 @@ export default function UserForm({cart, cantidad}) {
           <button type="submit" >
             Finalizar Compra
           </button>
-          <button type="reset">Vaciar Carrito</button>
+          <button type="reset">Vaciar</button>
         </div>
       </form>
     </div>
   )
+}
+
+UserForm.propTypes = {
+  cart: PropTypes.string.isRequired,
+  cantidad: PropTypes.number.isRequired
 }

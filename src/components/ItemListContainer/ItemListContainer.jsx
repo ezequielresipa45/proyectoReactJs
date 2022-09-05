@@ -1,62 +1,52 @@
-import "./ItemListContainer.css";
-import React, { useEffect, useState } from "react";
-import ItemList from "../ItemList/ItemList";
-import { useParams } from "react-router-dom";
-import firestoreDB from "../../services/firebase";
-import { getDocs, collection, query, where } from 'firebase/firestore';
+import './ItemListContainer.css'
+import React, { useEffect, useState } from 'react'
+import ItemList from '../ItemList/ItemList'
+import { useParams } from 'react-router-dom'
+import firestoreDB from '../../services/firebase'
+import { getDocs, collection, query, where } from 'firebase/firestore'
+import PropTypes from 'prop-types'
 
-
-export default function ItemListContainer({ greeting }) {
-
-  function getProductos() {
-
+export default function ItemListContainer ({ greeting }) {
+  function getProductos () {
     return new Promise((resolve) => {
-
-      const productosCollection = collection(firestoreDB, "vehiculos")
+      const productosCollection = collection(firestoreDB, 'vehiculos')
 
       getDocs(productosCollection).then(snapshot => {
         const docsData = snapshot.docs.map(doc => {
           return { ...doc.data(), id: doc.id }
-        });
+        })
 
-        resolve(docsData);
-      });
-
-    });
+        resolve(docsData)
+      })
+    })
   }
 
-
-  function getItemsFromDBbyIdCategory(idParam) {
-
+  function getItemsFromDBbyIdCategory (idParam) {
     return new Promise((resolve) => {
+      const productosCollection = collection(firestoreDB, 'vehiculos')
 
-      const productosCollection = collection(firestoreDB, "vehiculos");
-
-      const q = query(productosCollection, where("car_make", "==", idParam))
+      const q = query(productosCollection, where('car_make', '==', idParam))
 
       getDocs(q).then(snapshot => {
-
         const docsData = snapshot.docs.map(doc => {
           return { ...doc.data(), id: doc.id }
-        });
-        resolve(docsData);
-      });
-    });
+        })
+        resolve(docsData)
+      })
+    })
   };
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
 
-  const categoria = useParams().idCategorias;
+  const categoria = useParams().idCategorias
 
   useEffect(() => {
     if (categoria) {
-
-      getItemsFromDBbyIdCategory(categoria).then((resolve) => setData(resolve));
-
+      getItemsFromDBbyIdCategory(categoria).then((resolve) => setData(resolve))
     } else {
-      getProductos().then((resolve) => setData(resolve));
+      getProductos().then((resolve) => setData(resolve))
     }
-  }, [categoria]);
+  }, [categoria])
 
   return (
     <div className="ItemListContainer">
@@ -65,5 +55,9 @@ export default function ItemListContainer({ greeting }) {
         <ItemList data={data} />
       </div>
     </div>
-  );
+  )
+}
+
+ItemListContainer.propTypes = {
+  greeting: PropTypes.string.isRequired
 }

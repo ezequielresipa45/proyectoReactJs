@@ -1,12 +1,12 @@
-import "../ItemDetail/ItemDetail.css";
-import ItemCount from "../ItemCount/ItemCount";
-import React, { useState } from "react";
-import Swal from "sweetalert2";
-import { useContext } from "react";
-import { cartContext } from "../../store/cartContex.js";
-import { Link } from "react-router-dom";
+import '../ItemDetail/ItemDetail.css'
+import ItemCount from '../ItemCount/ItemCount'
+import React, { useState, useContext } from 'react'
+import Swal from 'sweetalert2'
+import { cartContext } from '../../store/cartContex.js'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-export default function ItemDetail({
+export default function ItemDetail ({
   price,
   images,
   modelo,
@@ -16,25 +16,24 @@ export default function ItemDetail({
   id,
   data
 }) {
-  const {  addItem } = useContext(cartContext);
+  const { addItem } = useContext(cartContext)
 
-  const [state, setState] = useState(0);
+  const [state, setState] = useState(0)
 
   console.log(state) // Llamo a este console.log porque sino me tira el warning que el state no es usado
 
   const addCard = (producto, cantidad, id, price) => {
     Swal.fire({
-      position: "top-end",
-      icon: "success",
+      position: 'top-end',
+      icon: 'success',
       title: `Has añadido ${cantidad} ${producto} al carrito`,
       showConfirmButton: false,
-      timer: 1500,
-    });
+      timer: 1500
+    })
 
-    setState(cantidad);
-    addItem(producto, cantidad, id, price,data);
-
-  };
+    setState(cantidad)
+    addItem(producto, cantidad, id, price, data)
+  }
 
   return (
     <div className="item-detail">
@@ -59,14 +58,24 @@ export default function ItemDetail({
             <p>
               Adquieralo solo por <span>{price}</span>
             </p>
-            {state === 0 ? ( // Le digo que si el producto NO ESTA en el carrito o en el (array cart que me traigo de cartContext) que se muestre el itemCount y si el producto ESTA que el ITEMCOUNT SE OCULTE Y MUESTRE EL IR AL CARRITO...
-              <ItemCount cantidad={cant} addCard={addCard} marca={marca} id={id} price={price} />
-            ) : (
-              <Link to="/CartDetalleCompra">Ir al carrito</Link>
-            )}
+            {state === 0
+            // Le digo que si el producto NO ESTA en el carrito o en el (array cart que me traigo de cartContext) que se muestre el itemCount y si el producto ESTA que el ITEMCOUNT SE OCULTE Y MUESTRE EL IR AL CARRITO...
+              ? <ItemCount cantidad={cant} addCard={addCard} marca={marca} id={id} price={price} />
+              : (<Link to="/CartDetalleCompra">Ir al carrito</Link>)}
           </div>
         </div>
       </div>
     </div>
-  );
+  )
+}
+
+ItemDetail.propTypes = {
+  price: PropTypes.number.isRequired,
+  images: PropTypes.string.isRequired,
+  modelo: PropTypes.string.isRequired,
+  marca: PropTypes.string.isRequired,
+  detalles: PropTypes.string.isRequired,
+  cant: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
+  data: PropTypes.string.isRequired
 }

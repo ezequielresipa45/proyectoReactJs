@@ -1,14 +1,14 @@
-import "./App.css";
-import NavBar from "./components/NavBar/NavBar.jsx";
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer.jsx";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
-import Inicio from "./components/Inicio/Inicio";
-import CartProvider from "./store/cartContex";
-import CartDetalleCompra from "./components/CartDetalleCompra/CartDetalleCompra";
+import './App.css'
+import NavBar from './components/NavBar/NavBar.jsx'
+import ItemListContainer from './components/ItemListContainer/ItemListContainer.jsx'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
+import Inicio from './components/Inicio/Inicio'
+import CartProvider from './store/cartContex'
+import CartDetalleCompra from './components/CartDetalleCompra/CartDetalleCompra'
+import React from 'react'
 
-
-function App() {
+function App () {
   return (
     <div className="App">
       <BrowserRouter>
@@ -30,7 +30,7 @@ function App() {
         </CartProvider>
       </BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
